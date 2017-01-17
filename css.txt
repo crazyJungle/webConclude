@@ -1,0 +1,435 @@
+font
+    color 
+    align
+    font-size
+    font-family 
+    font-weight 
+    text-decoration:underline;
+    text-transform:lowercase ;
+    letter-spacing:20px;
+
+table
+    border: solid 3px red;
+    width: 200px;
+    height: 300px;
+    border-collapse: collapse;
+caption
+    caption-side: bottom
+th scope="row/col"
+
+div 
+    width: 100px;
+    height: 100px;
+    border: solid 1px red;
+    text-align: center;
+    line-height: 100px;
+    float:left/right/...
+    clear:left/right/both;
+
+边框
+border: solid 2px red;
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+
+背景 
+background-color: #ef8c8c;
+    background: rgba(0,0,0,.5);
+    background-image: url("../img/bg1.jpg");
+    background-repeat: no-repeat;
+    background-position:10px 40px;
+    background-attachment: fixed;
+    background-size: cover;
+
+input type="text" 
+border-width:0px;
+border-bottom:solid 1px #ccc;
+
+a href="javascript:;/#"
+    text-decoration:none/underline;
+a:hover
+    text-decoration:none;
+    cursor:pointer;
+
+盒子模型：
+内部内容:
+padding:10px; 上下左右
+padding:10px 20px; 上下  左右
+padding:10px 20px 30px; 上 左右 下
+padding:10px 20px 30px 40px; 上 右 下 左
+padding-top/right/bottom/left
+
+外部间距
+margin
+同上
+
+div
+    width:60px;
+    hight:60px;
+    padding:20px;/*距离left与height不变，height和width增加20*2px的宽度*/
+
+*{
+    padding:0px;
+    margin:0px; 
+}
+
+#d1代表div
+#d1{
+    width:100px;
+    height:300px;
+    border:solid 1px red;
+}
+#d1 p{
+	height:30px;
+	不写width/*宽度始终与父元素一致，向左撑开不会溢出*/
+	background-color:#f55656;
+	line-height:30px;
+	padding-left:30px;
+}
+
+padding没有负数,margin有负数
+margin-left:-10px;
+
+div居中
+margin:0px auto;
+
+行内元素的padding与margin:
+margin只有左右有效果
+padding都有效果
+
+只有设置了position才用left,top
+
+position:absolute 
+1.脱离了文档流(就没有float这一说法了)
+2.若父元素没有设置了定位，left,top相对于窗体 
+3.若父元素设置了定位，left,top是相对于父元素的。
+
+position:relative
+1.没有脱离文档流
+2.不管父元素有没有定位，位置相对于父元素。top,left
+3.若其他同级元素占用了文档流中的位置，再定位时还要考虑它被占用的位置
+
+position:absolute
+水平居中
+left:50%;
+margin-left:负的一半width;
+再加上下面就垂直居中
+top:50%;
+margin-top:负的一半height;
+
+ul li的去掉圆圈:list-style-type:none; 
+border-radius:100%;圆角
+border-top-left-radius:20px;单独设置
+设置<和>用&lt;和&gt;---可以通过设置字体的样式让它垂子居中.
+再设置background:rgba(0,0,0,0.5);
+
+position:fixed; 固定定位（也脱离文档流）
+
+默认position是static 静态定位
+没有定位，元素出现在正常的流中
+（忽略 top, bottom, left, right 或者 z-index 声明）。
+z-index默认等于1，控制设置了position:absolute的元素(脱离了文档流的)
+
+选择器：
+> 指定子元素
++ 匹配紧随它之后的同级元素（是挨着后面的一个）
+~ 匹配它之后的同级元素（是后面的所有）
+
+a[title] 设置了title属性的标签
+a[title=val] 设置了title属性值为val的标签
+a[title^=val] 设置了title属性值以val开头的标签
+a[title$=val] 设置了title属性值以val结尾的标签
+a[title*=val] 设置了title属性值包含val的标签
+其他类推，比如href^=www和href$=pdf
+
+伪类：可以通过添加一个实际的类来达到
+p>i:first-child {color:red;}
+<p><i>first</i><i>second</i></p>
+达到这样的效果:
+.first-child{color:red;} 
+<p><i class='first-child'>first</i><i>second</i></p>
+
+伪元素: 需要通过添加一个实际的元素才能达到
+:p:first-letter{color:red;}
+<p><span class='first-letter'>i</span>am james.</p>
+达到这样的效果:
+.first-letter{color:red;}
+<p><span class='first-letter'>i</span>am james.</p>
+
+常用伪类
+a:link 一开始，默认状态
+a:hover 鼠标移上去之后
+a:active 鼠标点击的那一刻
+a:visited 鼠标点击之后 
+input：focus 聚焦之后
+:disabled 被禁用的元素
+:enabled 被激活的元素
+:checked 被选中的元素
+:readonly 只读的元素
+
+八个常用的伪元素
+:nth-child(n) 其父元素的第n个元素
+:nth-last-child(n) 其父元素的倒数第n个元素
+
+:first-child 其父元素的第一个元素
+:last-child 其父元素的最后一个元素
+
+p:nth-of-type(n) 是其父元素的第n个p元素(p指明类型，其他类推)
+p:nth-last-of-type 是其父元素的倒数第n个p元素(p指明类型，其他类推)
+
+p:first-of-type 是其父元素的第一个p元素(p指明类型，其他类推)
+p:first-of-type 是其父元素的最后一个p元素(p指明类型，其他类推)
+----------------
+(伪元素可以用两个:) 
+::before{content:"在什么之前添加的内容";}   在什么之前
+::after 									在什么之后
+::first-letter 第一个字
+::first-line 第一行
+
+::selection{color:yellow;background:blue;} 
+在选择段落的时候设置的样式
+
+css权重
+内联 A
+id B
+css C 
+标签 D
+* 大于 继承 
+继承 0 
+
+text-shadow 文字阴影
+	10px 10px 10px red，向右阴影 向下阴影 半径 颜色
+	-5px -5px 5px blue; 向上阴影 向下阴影 半径 颜色
+text-indent 文字缩进(可以被继承)
+
+box-shadow 盒子阴影 用法同上
+
+断句
+word-warp:break-word; 断单词---一行一个单词，
+放不下一个单词的时候就下一行
+word-break:break-all; 断单词---一行内再放下一个单词的情况下还能放下其他的单词就继续放，
+放不下时再换行
+white-space:nowarp; 强制在一行内显示所有的文本
+
+文本溢出
+overflow:hidden; 超出后隐藏
+overflow:auto; 超出有滚动条
+overflow:scroll; 没有超过也有滚动条
+
+text-overflow:clip 文本溢出时直接裁剪掉
+text-overflow:ellipsis 文本溢出时显示省略号
+搭配overflow:hidden;使用
+
+background-size:cover 背景图片铺满
+
+transform:Rotate(40deg)-默认顺时针 scale(1.2)
+在body里设置一个overflow:hidden 就不会有滚动条了
+transform:translate(40px, 40px) 水平位移 垂直位移
+transform:skew(30deg,10deg) 水平倾斜30度 垂直倾斜10度
+平滑过渡: 作用对象 时间 效果
+transition:transform 1s ease;（all代表所有作用对象）
+
+-webkit- 谷歌浏览器
+-ms- IE浏览器
+-moz- 火狐浏览器
+-o- 欧朋浏览器 
+
+动画 ：动画名称 时间 播放次数  播放方式
+animation:x-spin 20s infinite ease;
+定义动画(关键帧)
+@keyframes x-spin{
+	0%{
+		transform:rotateX(0deg);
+	}
+	50%{
+		transform:rotateX(180deg);
+	}
+	100%{
+		transform:rotateX(360deg);
+	}
+}
+
+perpective:视角 值越大看到的越小
+transform-style:preserve-3d;
+
+渐变效果 
+线性渐变，开始位置，结束位置，开始的颜色，结束的颜色，色标(可以多个)
+background:gradient(linear,left top, left bottom, from(blue), to(red), color-stop(0.4,#fff);
+径向渐变，内圆心位置，内圆半径，外圆圆心位置，外圆半径，开始颜色，结束颜色，色标
+background:gradient(radial,center center,0, center center 460, from(blue)，to(red),color-stop(0.6,#fff))
+
+自适应：
+<meta name="viewport" content="width=device-width,initial-scale=1">
+width:用百分比；
+
+响应式布局原理
+<style type="text/css">
+/*屏幕宽度大于900的时候*/
+*
+{
+    padding:0px;
+    margin:0px;
+    font-family:"微软雅黑";
+}
+#header
+{
+    height:100px;
+    border:solid 1px red;
+    margin:0px auto;
+}
+#main
+{
+    margin:10px auto;
+    height:400px;
+}
+#footer
+{
+    margin:0px auto;
+    height:100px;
+    border:solid 1px red;
+}
+@media screen and (min-width:900px)
+{
+    #header,#footer
+    {
+        width:800px;
+    }
+    #main
+    {
+        width:800px;
+        height:400px;;
+    }
+    #main-left
+    {
+        width:200px;
+        height:400px;
+        border:solid 1px red;
+        float:left;
+    }
+    #main-center
+    {
+        width:394px;
+        height:400px;
+        border:solid 1px red;
+        float:left;
+    }
+    #main-right
+    {
+        width:200px;
+        height:400px;
+        border:solid 1px red;
+        float:left;
+    }
+}
+@media screen and (min-width:600px) and (max-width:900px)
+{
+    #header,#footer
+    {
+        width:600px;
+    }
+    #main
+    {
+        width:600px;
+        height:400px;;
+    }
+    #main-left
+    {
+        width:200px;
+        height:400px;
+        border:solid 1px red;
+        float:left;
+    }
+    #main-center
+    {
+        width:396px;
+        height:400px;
+        border:solid 1px red;
+        float:left;
+    }
+    #main-right
+    {
+        display:none;
+    }
+}
+@media screen and (max-width:600px)
+{
+    #header,#footer
+    {
+        width:300px;
+    }
+    #main
+    {
+        width:300px;
+        height:400px;;
+    }
+    #main-left
+    {
+        display:none;
+    }
+    #main-center
+    {
+        width:300px;
+        height:400px;
+        border:solid 1px red;
+    }
+    #main-right
+    {
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+<div id="header">头部</div>
+<div id="main">
+  <div id="main-left">主题-左边</div>
+  <div id="main-center">主题-中间</div>
+  <div id="main-right">主题-右边</div>
+</div>
+<div id="footer"></div>
+</body>
+
+响应式布局可能用到的：
+max-width:1024px;
+
+轻量级的插件：http://purecss.org/
+图片自适应：<img src="..." class="pure-img" />
+
+所有浏览器宽度字体大小默认16px
+1 rem(根据根节点的字体大小为单位-html)
+1 em (根据父节点的字体大小为单位)
+
+若先设置
+html{font-size:62.5%;}(10/16=62.5%)
+再设置 
+#d1{font-size:1rem;}//大小为10px(1*10px)
+移动端适合用rem
+
+如何检测浏览器版本并让用户自己更新
+<!--[if lte IE9]>
+	<p class="browserupgrade">您的浏览器版本该升级啦!请到<a href="http://browsehappy.com">这里</a>更新,已获得最佳的体验</p>
+<![endif]-->
+
+超链接访问后hover样式不出现：有时候我们同时设置了a:visited和a:hover样式，但一旦超链接访问后，hover的样式就不再出现，这是怎么回事呢？
+是因为将样式顺序放错了，调整为先a:visited再a:hover。
+关于a标签的四种状态的排序问题，有个简单好记的原则，
+叫做love hate原则，即i(link)ov(visited)e h(hover)a(active)e。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

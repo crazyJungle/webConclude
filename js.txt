@@ -1,0 +1,640 @@
+js区分大小写，html和css不区分大小写。
+html注释<!-- -->
+css注释 /* */
+js注释 //或/* */
+
+给按钮添加一个点击事件 onclick="MyClick()"
+function MyClick(){
+	alert("hello world");
+}
+
+页面加载完之后
+1. js写法
+onload = function(){
+	document.getElementById("btn").onclick = function(){
+		alert("hello world");
+	}
+}
+2. jquery写法
+$(function(){
+	$("#btn").click(function(){
+		alert("hello world");
+	});
+});
+
+var 变量生明(弱类型)
+首字母不能是数字，命名有字母，数字，下划线和$构成。
+命名前缀：
+a 数组
+b 布尔值
+f 浮点
+fn 函数
+i 整型
+o 对象
+re 正则
+s 字符串
+
+网页里输入的任何内容在js里都是字符串
+var sInput = prompt("请输入一个字符串");
+
+字符串:
+length 字符串长度
+charAt(字符位置) 获取指定位置/索引的字符
+
+substring(起始位置) //从起始位置一直到末尾位置
+substring(起始位置,结束位置) //从起始位置一直到结束位置,但不包括结束位置的字符
+substr(起始位置，截取长度)
+
+indexOf(字符) //返回字符在字符串中的索引
+indexOf(字符,开始位置) //返回字符在字符串中的索引,注意空格也算字符
+--------------------------------
+toString()
+join() //更改连接符
+------------------------------
+split(分隔符) //字符串变数组
+reverse() 数组反序
+sort()  数组排序
+------------------------------
++ 可做连接符和加法（有数字做计算，有字符串做连接）
+如果数字转换不过来的话就会报NAN
+undefined 说明变量没有定义或没有赋值
+null 表示结果为空
+- * / 只做运算
+
+Nunber() 将输入的转化为数字
+isNaN() 判断输入的不是数字
+
+parseInt()
+parseFloat()
+
+= 赋值
+== 等于(不判断类型)
+=== 全等(判断类型)
+
+toLowerCase()
+toUpperCase()
+
+九九乘法表
+function MyClick(){
+	var s = "<table>";
+	for(var i = 1; i <= 9; i++){
+		s += "<tr>";
+		for(var j = 1; j <= i; j++){
+			s += "<td>" + i + "*" + j + "=" + i*j + "</td>";
+		}
+		s += "</tr>";
+	}
+    s += "</table>";
+	document.write(s);
+}
+冒泡排序
+i 0~n-2
+j i~n-1
+function MyClick(){
+	var aNum = [2,12,4,6,3,333,78,99,13,44,1,0];
+	var aTemp;
+	for(var i = 0; i < aNum.Length-2; i++){
+		for(var j = i; j < aNum.Length-1; j++){
+			if(aNum[i] > aNum[j])
+			{
+				aTemp = aNum[i];
+				aNum[i] = aNum[j];
+				aNum[j] = aTemp;
+			}
+		}
+	}
+}
+
+日期
+var idata = new Date();
+idata.getFullYear();
+idata.getMonth();
+idata.getDate()
+idata.getDay() 返回星期几
+idata.getHours()
+idata.getMinutes()
+idata.getSeconds()
+idata.getMilliseconds()
+js获取的是客户端的时间,c#后台回去的是服务端的时间
+
+数学
+Math.max(a,b)
+Math.min(a,b) 
+Math.ceil(c)  向上舍入
+Math.floor(c) 向下舍入
+Math.round(c) 四舍五入
+得到1到100的随机数 
+Math.random()产生 0 <= x < 1 的数
+Math.floor(Math.random()*100+1)
+----------------------------------------------
+
+window.open() 打开一个网页
+window.close() 关闭一个网页
+window.history.go()
+
+confirm() 返回布尔类型
+prompt() 返回字符串类型
+
+setInterval(函数,时间)
+clearInterval()
+setTimeout(函数,时间)
+
+-----------------------------------------
+
+js与jquery对象的转化
+
+jquery->js: $("#btn")[0].onclick = function(){
+	...
+}
+
+js->jquery: $(document.getElementById("btn")).click(function(){
+	...
+})
+-----------------------------------------选择器---------
+$("#tab tr:odd")/$("#tab tr:even") 找到奇数行和偶数行
+$.trim(s) 去掉空格 
+s.replace(""," ") s代表字符串
+
+$("li:has(a)").css("color","red"); 找到有超链接的li
+$("li").eq(0)/$("li:eq(0)") //第一个li
+$("li").gt(1) //第二个li之后的所有li
+$("input[type=button]") == $(":button")
+$("input[type=text]") == $(":text")
+$("input[type=checkbox]") == $(":checkbox")
+$("input[disable=disable]") == $(":disable")
+$("input[enable=enable]") == $(":enable")
+$("input[type=input]") == $(":input")
+其他类似
+$("div:contain(txt)") 找到包含txt文本的div标签 txt代表字符串
+
+$("div").not(":eq(0)") 选择不是第一个的div
+$("li").not("[title*=sss]") 排除
+$("li").filter("[title*=sss]") 筛选出
+$("li:has(a)").find("p") 在某个集合里找什么
+$("div").is("img") 返回布尔类型
+$("div").each(function(index){   遍历 index代表当前div的索引
+	var i = index + 1;           this代表当前对象
+	$(this).attr("title","我是第"+i+"div");  
+	//attr既设置当前属性值也可以获取当前属性值
+	alert($("this").attr("title"));
+}); 
+//如何设置多个属性值
+$("#btn").attr({"title":"按钮","value":"请点击"})
+$("#btn").removeAttr("title"); //删除属性值
+
+$("img").size() 获取元素个数
+$("img")[1] == $("img").eq(1)
+$("img").index($("img[title]").eq(0)) 获取设置了title的第一个img在所有img中的索引
+
+
+$("#d1").addClass("c1") 添加一个样式(常用)
+$("#d1").css("color","red") 添加一个内联样式(多个参考attr)
+$("#d1").addClass("c1 c2") 添加多个样式
+$("#d1").removeClass("c2") 移除一个样式
+
+$("#d1").toggleClass("c1"); 样式交替执行(有c1/没有c1)
+
+$("#d1").mouseover(function(){...}) 鼠标移上去之后
+$("#d1").mouseout(function(){...})  鼠标离开之后
+$("#d1").hover(function(){移上去},function(){离开});
+
+$("#d1").has("c1") 判断有没有c1样式
+
+$("#d1").text()
+$("#d1").html()
+
+------------------jquery链------------------------------
+$("#d1").append("<p>sss</p>") 在对象后加什么
+$("<p>sss</p>").appendTo("#d1") 将什么加到某个对象里
+
+$("div:eq(0)").after($("#d1")) 在第一个div后面加上d1
+$("div:eq(0)").before($("#d1")) 在第一个div之前加上d1
+$("div:eq(0)").siblings() 找到它的兄弟元素
+$("#d1").children() 找到它的所有子元素
+$("#d1").eq(0).next() 找到它后面的那个紧邻的同辈元素--不区分类型
+$("#d1").eq(0).nextAll() 找到它后面的所有同辈元素
+$("#d1").eq(1).prev() 找到它前面的一个同级的元素
+$("#d1").eq(1).prevAll() 找到它前面的所有同级的元素
+$("#d1").eq(2).parent(); 找到它直接父元素
+$("#d1").eq(2).parents(); 找到它所有父元素一直到body
+
+看例子：
+$("div").addClass("c1").filter(function(index){
+	return index == 1 || $(this).attr("id") == "d3"
+}).addClass("c2");
+
+$("p").find("span").addClass("myClass1").addClass("myClass2");
+等价于
+$("p").find("span").addClass("myClass1 myClass2");
+
+//end是当前结果集的上一结果集
+$("p").find("span").addClass("myClass1").end().addClass("myClass2");
+
+//andSelf是当前结果集加上上一结果集
+$("p").find("span").addClass("myClass1").andSelf().addClass("myClass2");
+--------------------------------------------------------
+$("div").empty() 内容清空
+$("div").remove() 元素删除
+
+bind 会反复执行
+$("#d1").bind("click",function(){...}); //绑定事件
+$("#d1").bind("click",function(){...}).bind("click",function(){...}); //绑定多个事件
+$("#d1").unbind("click"); 解除绑定-click
+
+one不会反复执行
+$("#d1").one() //用法类似
+--------------------------------------------------------
+$("#d1").hide(); 简单的隐藏
+$("#d1").hide(时间,回调函数);
+$("#d1").show(); 同上
+$("#d1").toggle(); 交替执行显示/隐藏
+
+$("#d1").slideUp(); 向上隐藏
+$("#d1").slideDown(); 向下显示
+$("#d1").slideToggle(); 上下隐藏显示
+
+$("#d1").fadeOut(); 渐变隐藏
+$("#d1").fadeIn(); 渐变显示
+$("#d1").fadeToggle(); 渐变隐藏/显示
+
+克隆  clone()
+----------------------------------------------------------
+动画：首先要脱离文档流--然后是--style,时间,回调函数
+$("#d1").click(function(){
+	$(this).css("position","absolute").animate({"top":"100px","left":"100px"},1000,function(){
+		$(this).animate({"top":"0px","left":"200px"},1000);
+	});
+});
+---------------------------------------------------------------------------
+例子
+<ul id="u1">
+        <li class="litem"><a href="javascript:;">体育明星</a>
+            <ul class="uitem">
+                <li><a href="javascript:;">乔丹</a></li>
+                <li><a href="javascript:;">乔丹</a></li>
+                <li><a href="javascript:;">乔丹</a></li>
+            </ul>
+        </li>
+        <li class="litem">
+            <a href="javascript:;">娱乐明星</a>
+            <ul class="uitem">
+                <li><a href="javascript:;">王宝强</a></li>
+                <li><a href="javascript:;">王宝强</a></li>
+                <li><a href="javascript:;">王宝强</a></li>
+            </ul>
+        </li>
+        <li class="litem">
+            <a href="javascript:;">政治明星</a>
+            <ul class="uitem">
+                <li><a href="javascript:;">毛泽东</a></li>
+                <li><a href="javascript:;">毛泽东</a></li>
+                <li><a href="javascript:;">毛泽东</a></li>
+            </ul>
+        </li>
+        <li class="litem">
+            <a href="javascript:;">历史明星</a>
+            <ul class="uitem">
+                <li><a href="javascript:;">秦始皇</a></li>
+                <li><a href="javascript:;">秦始皇</a></li>
+                <li><a href="javascript:;">秦始皇</a></li>
+            </ul>
+        </li>
+    </ul>
+	
+	//当前点击的超链接的ul显示，其余的隐藏
+	$(".litem>a").click(function () {
+        $(this).next().show(1000);
+        $(this).parent().siblings().find("ul").stop(true,true).stop(true,true).hide(1000);
+    });
+	
+	stop(true,true)  立马结束
+--------------------------------------------------------------------------------
+<div id="dlunbo">
+      <div id="digs">
+          <div class="ig"><img src="img/1.jpg" /></div>
+          <div class="ig"><img src="img/2.jpg" /></div>
+          <div class="ig"><img src="img/3.jpg" /></div>
+          <div class="ig"><img src="img/4.jpg" /></div>
+      </div>
+      <div id="tabs">
+          <div class="tab bg">1</div>
+          <div class="tab">2</div>
+          <div class="tab">3</div>
+          <div class="tab">4</div>
+      </div>
+      <div class="btn btn1">&lt;</div>
+      <div class="btn btn2">&gt;</div>
+</div>
+
+图片轮播
+var i = 0;
+var timer;
+$(function(){
+	$(".ig").eq(0).show().siblings().hide();
+	BeginShow();
+	$(".tab").hover(function () {
+        i = $(this).index();
+        ShowPicTab();
+        clearInterval(timer);
+    }, function () {
+        BeginShow();
+	});
+	
+	$(".btn1").click(function () {
+        clearInterval(timer);
+        i--;
+        if (i == -1) {
+            i = 3;
+        }
+        ShowPicTab();
+        BeginShow();
+    });
+});
+
+function ShowPicTab() {
+    $(".ig").eq(i).stop(true, true).fadeIn(300).siblings().fadeOut(300);
+    $(".tab").eq(i).addClass("bg").siblings().removeClass("bg");
+}
+
+function BeginShow() {
+    timer = setInterval(function () {
+        i++;
+        if (i == 4) {
+            i = 0;
+        }
+        ShowPicTab();
+    }, 3000);
+}
+-----------------------------------------------------------------
+漫天飞舞的雪花：
+1.雪片产生的时候left随机
+2.雪片下落后left随机
+3.雪片的大小随机
+4.雪片的透明度随机
+5.雪片下降的速度随机
+
+body {
+    background-color: #000000;
+    overflow: hidden;
+}
+
+var minSize = 5;
+var maxSize = 50;
+var newOn = 400;//间隔多少时间产生一个雪片
+var flakeColor = "#fff";
+var $flake = $("<div></div>").css("position", "absolute").html("?"); //飘雪花
+//var $flake = $("<div></div>").css("position", "absolute").html('<img src="image/11.jpg">'); //飘图片
+$(function () {
+    var documentWidth = $(document).width();//获取到浏览器的宽度
+    var documentHight = $(document).height();//获取到浏览器的高度
+    setInterval(function () {
+        var startPositionLeft = Math.random() * documentWidth;//产生雪片一开始的随机的left
+        var startOpacity = 0.7 + Math.random();//产生雪片一开始的透明度
+        var endPositionLeft = Math.random() * documentWidth;//产生雪片下落后的随机的left
+        var durationFall = documentHight * 10 + Math.random() * 3000;//产生一个雪片下落的随机的时间
+        var sizeFlake = minSize + Math.random() * maxSize;//产生随机大小的雪片
+        // $flake.find("img").css("width", 100 + Math.random() * 100);
+        $flake.clone().appendTo("body").css({
+            "left": startPositionLeft,
+            "opacity": startOpacity,
+            "font-size": sizeFlake,
+            "color": flakeColor,
+            "top": "-50px"
+        }).animate({
+            "top": documentHight,
+            "left": endPositionLeft,
+            "opacity": 0.6*Math.random()
+        }, durationFall, function () {
+            $(this).remove();
+        });
+    }, newOn);
+});
+------------------------------------------------------------------------------
+画板
+<canvas id="canvas"></canvas>
+    <div id="controller">
+        <div id="dclear"><a href="javascript:;" id="btnclear">清除</a></div>
+        <div id="dcolors">
+            <div class="dcolor dblack" data-color="black"></div>
+            <div class="dcolor dred" data-color="red"></div>
+            <div class="dcolor dgreen" data-color="green"></div>
+            <div class="dcolor dblue" data-color="blue"></div>
+            <div class="dcolor dpink" data-color="pink"></div>
+        </div>
+    </div>
+------------------
+var canvasWidth, canvasHight, canvas, context;
+var isMouseDown = false;
+var LastLoc = { x: 0, y: 0 };
+var scolor = "black";
+function windowToCanvas(x, y)//x,y为距离屏幕的距离
+{
+    var bbox = canvas.getBoundingClientRect();//canvas距离屏幕的距离
+    return { x: Math.round(x - bbox.left), y: Math.round(y - bbox.top) };//获取距离canvas的距离
+}
+function drawGrid() {
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHight;
+    context.strokeStyle = "#f00";
+    context.beginPath();
+    context.moveTo(3, 3);
+    context.lineTo(canvasWidth - 3, 3);
+    context.lineTo(canvasWidth - 3, canvasHight - 3);
+    context.lineTo(3, canvasHight - 3);
+    context.closePath();
+    context.lineWidth = 6;
+    context.stroke();
+
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(canvasWidth, canvasHight);
+
+    context.moveTo(canvasWidth, 0);
+    context.lineTo(0, canvasHight);
+
+    context.moveTo(canvasWidth / 2, 0);
+    context.lineTo(canvasWidth / 2, canvasHight);
+
+    context.moveTo(0, canvasHight / 2);
+    context.lineTo(canvasWidth, canvasHight / 2);
+    context.lineWidth = 1;
+    context.stroke();
+}
+onload = function () {
+    canvasWidth = 400;//设置画板的宽度
+    canvasHight = 400;//设置画板的高度
+    canvas = document.getElementById("canvas");//获取到画板对象
+    context = canvas.getContext("2d");//设置画板的环境
+    drawGrid();
+
+    canvas.onmousedown = function (e) {//鼠标按下
+        e.preventDefault();//取消事件的默认动作
+        isMouseDown = true;
+        LastLoc = windowToCanvas(e.clientX, e.clientY);
+    }
+    canvas.onmouseup = function (e) {//鼠标按起
+        e.preventDefault();
+        isMouseDown = false;
+    }
+    canvas.onmouseout = function (e) {//出了画布
+        e.preventDefault();
+        isMouseDown = false;
+    }
+    canvas.onmousemove = function (e) {//鼠标移动
+        e.preventDefault();
+        if (isMouseDown) {
+            var curloc = windowToCanvas(e.clientX, e.clientY);
+            context.beginPath();
+            context.moveTo(LastLoc.x, LastLoc.y);
+            context.lineTo(curloc.x, curloc.y);
+            context.strokeStyle = scolor;
+            context.lineWidth = 20;
+            context.lineCap = "round";//帽子
+            context.lineJoin = "round";
+            context.stroke();
+            LastLoc = curloc;
+        }
+    }
+
+    $("#btnclear").click(function () {
+        context.clearRect(0, 0, canvasWidth, canvasHight);
+        drawGrid();
+    });
+    $(".dcolor").click(function () {
+        $(this).addClass("sel").siblings().removeClass("sel");
+        scolor = $(this).attr("data-color");
+    });
+}
+----------------------
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#canvas {
+    margin: 0 auto;
+    display: block;
+}
+
+#controller {
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    margin-top:10px;
+}
+
+#dclear {
+    float: right;
+}
+
+.dcolor {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.dblack {
+    background-color: black;
+}
+
+.dred {
+    background-color: red;
+}
+
+.dgreen {
+    background-color: green;
+}
+
+.dblue {
+    background-color: blue;
+}
+
+.dpink {
+    background-color: pink;
+}
+.sel {
+    border:solid 4px #b312f3;
+}
+--------------------------------------------------------------------------------
+三级联动
+	<select id="selProvince">
+        <option>---请选择---</option>
+    </select>
+    <select id="selCity">
+        <option>---请选择---</option>
+    </select>
+    <select id="selCounty">
+        <option>---请选择---</option>
+    </select>
+
+var aProvince = ["河北省", "山西省", "湖北省"];
+var aCity = [
+				["石家庄市", "张家口市", "承德市", "秦皇岛市"], 
+				["太原市", "朔州市", "大同市", "阳泉市"], 
+				["武汉市", "孝感市", "宜昌市", "襄阳市"]
+			];
+var aCountry = [
+				[["无极县", "赵县", "栾城县"], 
+					["沽源县", "尚义县", "阳原县"], 
+					["平泉县", "滦平县", "隆化县"], 
+					["抚宁县", "卢龙县", "昌黎县"]],
+				[["清徐县", "阳曲县", "娄烦县"], 
+					["山阴县", "应县", "右玉县"], 
+					["左云县", "阳高县", "天镇县"], 
+					["盂县", "平定县", "矿区"]], 
+				[["武昌区", "洪山区", "东湖新区"], 
+					["云梦县", "大悟县", "应城市"], 
+					["秭归县", "远安县", "枝江市"], 
+					["枣阳市", "老河口市", "谷城县"]]
+				];
+var num1 = 0;
+var num2 = 0;
+$(function () {
+    for (var i = 0; i < aProvince.length; i++) {
+        $("#selProvince").append("<option>" + aProvince[i] + "</option>");
+    }
+
+    $("#selProvince").change(function () {
+        $("#selCity").children("option").not(":eq(0)").remove();//清空之前的内容
+        $("#selCounty").children("option").not(":eq(0)").remove();
+        num1 =$(this).children("option:selected").index();
+        if (num1 > 0) {
+            var aC = aCity[num1 - 1];
+            for (var i = 0; i < aC.length; i++) {
+                $("#selCity").append("<option>" + aC[i] + "</option>");
+            }
+        }
+    });
+
+    $("#selCity").change(function () {
+        $("#selCounty").children("option").not(":eq(0)").remove();//清空之前的内容
+        num2 =$(this).children("option:selected").index();
+        if (num2 > 0) {
+            var aC = aCountry[num1 - 1][num2 - 1];
+            for (var i = 0; i < aC.length; i++) {
+                $("#selCounty").append("<option>" + aC[i] + "</option>");
+            }
+        }
+    });
+});
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

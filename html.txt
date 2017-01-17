@@ -1,0 +1,119 @@
+内联元素（行内元素）---内联元素(inline element)
+span
+a
+label
+img
+input
+select
+br
+i
+textarea
+1.默认情况下，不单独占满一行
+2.设置宽度高度不起作用
+
+相互转化：display:block/inline/inline-block
+
+块元素(block element)
+body
+div 
+p
+h1-h6
+ul,li ol,li dt,dl,dd
+pre
+table
+form
+1.单独占满一行
+2.默认内容显示在块元素的左上角
+
+常用标签：
+p 
+br
+pre
+h1-h6
+hr
+b
+u 
+s
+sub
+sup
+ul li
+ol li reversed start="5"
+
+table border cellpadding cellspacing width height bordercolor bgcolor align
+caption tr th td
+
+img src alt
+a href target tabindex
+
+form method action
+
+input type name id value           
+ (radio/checkbox/file/submit/reset/button
+/email/url/tel/number-min-max-step/search/color/date/month/week/time)
+label for
+
+select multiple
+option selected
+
+textarea cols rows
+
+fieldset legend 
+div
+strong
+s del
+abbr
+ul/ol li --- dl dt dd
+&copy; &lt; &gt;
+audio src controls autoplay loop   
+video src controls autoplay loop
+canvas width height
+header 
+
+<input type="text" list="taglist" />
+    <datalist id="taglist">
+        <option>苹果</option>
+        <option>橘子</option>
+        <option>西红柿2</option>
+        <option>西红柿3</option>
+        <option>4西红柿</option>
+    </datalist>
+
+   <form autocompelete="on">
+        <input type="text" list="citylist" />
+        <datalist id="citylist">
+            <option>BeiJing</option>
+            <option>QingDao</option>
+            <option>QingZhou</option>
+            <option>QingHai</option>
+        </datalist>
+    </form>
+
+ <details>
+        <summary>Copyright 2011.</summary>
+        <p>All pages and graphics on this web site are the property of W3School.</p>
+ </details>
+
+<address>
+        Written by <a href="mailto:webmaster@example.com">Donald Duck</a>.<br>
+        Visit us at:<br>
+        Example.com<br>
+        Box 564, Disneyland<br>
+        USA
+ </address>
+
+progress
+mark
+time 
+
+<input type="text" autofocus="autofocus" />
+<input type="file" name="img" multiple="multiple" />
+    <form action="1.aspx">
+        请输入邮政编码：<input type="text" pattern="/d{6}" title="请输入6位数的邮编" />
+        <input type="submit" />
+    </form>
+<input type="text" placeholder="请输入用户名" />
+contenteditable="true"   hidden="hidden"
+
+
+
+
